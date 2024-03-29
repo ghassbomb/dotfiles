@@ -24,28 +24,10 @@ BREW_PREFIX=$(brew --prefix)
 brew install coreutils
 ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 
-# Install a modern version of Bash.
-brew install bash
-brew install bash-completion2
-
-# Switch to using brew-installed bash as default shell
-if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
-  echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
-  chsh -s "${BREW_PREFIX}/bin/bash";
-fi;
-
-# Install `wget` with IRI support.
-brew install wget --with-iri
-
-# Install GnuPG to enable PGP-signing commits.
-brew install gnupg
-
 # Install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
 brew install grep
 brew install openssh
 brew install screen
-brew install php
 brew install gmp
 
 # Install other useful binaries.
@@ -55,6 +37,12 @@ brew install git-lfs
 brew install imagemagick --with-webp
 brew install lua
 brew install p7zip
+brew install neovim
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
+# Install oh-my-zsh and pl10k
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k

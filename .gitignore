@@ -12,3 +12,10 @@ Thumbs.db
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
+
+.zsh_history
+.zcompdump
+.zsh_sessions
+
+.iterm2
+.iterm2_shell_integration.zsh
